@@ -80,5 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// buy me coffee
+document.addEventListener("DOMContentLoaded", function () {
+    const coffeeBtn = document.getElementById("coffee-btn");
+    const coffeeMenu = document.querySelector(".coffee-menu");
+
+    coffeeBtn.addEventListener("click", function () {
+        coffeeMenu.classList.toggle("active");
+    });
+});
+
 
 

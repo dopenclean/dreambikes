@@ -122,48 +122,27 @@ nav img {
     margin: 0;
 }
 
-.bike-info-not {
+.bike-info-not{
     width: 30%;
-    margin: 30px auto;
-    padding: 0px 20px;
+    margin: 20px auto;
+    /* padding: 10px 0px; */
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
     text-align: center;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bike-info-not h2{
+    font-weight: normal;
+    margin: 5px 0px;
+    padding-bottom: 5px;
 }
 
 /* Bike Info Box (Glassmorphism, Improved) */
-.bike-info {
-    width: 40%;
-    max-height: 300px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 15px;
-    
-    background: rgba(20, 20, 20, 0.6);
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
-    
-    text-align: center;
-    color: white;
-    font-size: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    
-    position: relative;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
-    overflow-y: auto;
-    display: none;
-    
-    animation: fadeIn 0.2s ease-in-out;
-}
-
 /* Smooth Fade In */
 @keyframes fadeIn {
     0% {
@@ -195,7 +174,7 @@ nav img {
     margin: auto;
     padding: 20px;
     border-radius: 15px;
-
+    z-index: 10;
     background: #181818;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -258,7 +237,7 @@ nav img {
     bottom: 50px; /* Adjust this value to move it up/down */
     left: 50%;
     transform: translateX(-50%);
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -313,8 +292,7 @@ footer {
     width: 100%;
     background: #111; /* Dark background */
     color: #fff; /* White text */
-    text-align: center;
-    padding: 15px 0;
+    padding: 5px 20px;
     font-size: 16px;
     font-family: "Jersey 20";
     position: fixed;
@@ -322,17 +300,84 @@ footer {
     left: 0;
     z-index: 1000;
     border-top: 2px solid #FFB22C;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Push content to edges */
 }
 
-footer p {
-    margin: 0;
-    opacity: 0.8;
-    transition: opacity 0.3s ease-in-out;
+/* Buy Me a Coffee Button Inside Footer */
+.coffee-container {
+    position: relative;
+    margin-right: 30px;
 }
 
-footer:hover p {
+#coffee-btn {
+    background: #FFB22C;
+    color: #000;
+    font-family: "Jersey 20";
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+#coffee-btn:hover {
+    background: #ff9900;
+}
+
+/* Coffee Menu - Initially Hidden */
+.coffee-menu {
+    position: absolute;
+    bottom: 50px; /* Above footer */
+    right: 0;
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Adjust Individual Logo Containers */
+.coffee-menu div {
+    width: 40px; /* Resize for smaller appearance */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 178, 44, 0.8); /* Subtle background */
+    transition: transform 0.3s ease-in-out;
+    
+    /* Make sure logos connect seamlessly */
+    border-radius: 0; /* Remove gaps */
+    
+}
+
+/* Adjust First and Last Item for Rounded Edges */
+.coffee-menu div:first-child {
+    border-radius: 10px 10px 0 0; /* Round top */
+}
+.coffee-menu div:last-child {
+    border-radius: 0 0 10px 10px; /* Round bottom */
+}
+
+/* Adjust Logo Size */
+.coffee-menu img {
+    width: 30px; /* Resize images */
+    height: auto;
+}
+
+/* Show Menu When Active */
+.coffee-menu.active {
     opacity: 1;
+    transform: translateY(0);
 }
+
+
+
+
 
 .loader {
     width: 50px;
