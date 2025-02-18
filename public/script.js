@@ -54,3 +54,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Loader animation
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".image-button");
+    const loader = document.getElementById("loader");
+    const body = document.body; // Select body instead of html
+
+    buttons.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent instant form submission
+
+            loader.style.display = "block";
+            body.classList.add("dimmed-background"); // Apply background dimming effect
+            
+            // Small delay before form submission
+            setTimeout(() => {
+                event.target.closest("form").submit();
+            }, 300); // Prevent flashing effect
+        });
+    });
+
+    // Restore background when page loads again
+    window.addEventListener("pageshow", function () {
+        loader.style.display = "none";
+        body.classList.remove("dimmed-background");
+    });
+});
+
+
+
