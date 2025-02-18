@@ -123,7 +123,7 @@ nav img {
 }
 
 .bike-info-not {
-    width: 50%;
+    width: 30%;
     margin: 30px auto;
     padding: 0px 20px;
     border-radius: 15px;
@@ -152,7 +152,8 @@ nav img {
     font-size: 18px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     
-    position: absolute;
+    position: relative;
+    z-index: 10;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -251,6 +252,61 @@ nav img {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.paragraph {
+    position: fixed; /* Attach it to the screen */
+    bottom: 50px; /* Adjust this value to move it up/down */
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Jersey 20";
+    font-size: 28px;
+    text-transform: uppercase;
+    text-shadow: 0 0 5px #ffae00, 0 0 10px #ff8800, 0 0 15px #cc7700;
+    
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+
+.paragraph h3 {
+    padding: 15px 30px;
+    border: 4px solid transparent;
+    border-radius: 10px;
+    position: relative;
+    
+    background: linear-gradient(90deg, rgba(255, 174, 0, 0.15), rgba(204, 119, 0, 0.1));
+
+    /* Balanced Golden Glow */
+    --golden-glow: linear-gradient(90deg, #ffae00, #ff8800, #cc7700, #ffcc00);
+    border-image-source: var(--golden-glow);
+    border-image-slice: 1;
+    animation: goldenNeonRun 4s infinite linear;
+}
+
+/* Subtle Running Golden Glow Effect */
+@keyframes goldenNeonRun {
+    0% {
+        border-image-source: linear-gradient(0deg, #ffae00, #ff8800, #cc7700, #ffcc00);
+    }
+    25% {
+        border-image-source: linear-gradient(90deg, #ff8800, #cc7700, #ffcc00, #ffae00);
+    }
+    50% {
+        border-image-source: linear-gradient(180deg, #cc7700, #ffcc00, #ffae00, #ff8800);
+    }
+    75% {
+        border-image-source: linear-gradient(270deg, #ffcc00, #ffae00, #ff8800, #cc7700);
+    }
+    100% {
+        border-image-source: linear-gradient(360deg, #ffae00, #ff8800, #cc7700, #ffcc00);
+    }
+}
+
 
 /* Footer Styling */
 footer {
