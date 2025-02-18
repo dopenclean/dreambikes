@@ -84,11 +84,38 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const coffeeBtn = document.getElementById("coffee-btn");
     const coffeeMenu = document.querySelector(".coffee-menu");
+    const coffeeContainer = document.querySelector(".coffee-container");
+    const mainLogo = document.querySelector(".main-logo");
 
     coffeeBtn.addEventListener("click", function () {
         coffeeMenu.classList.toggle("active");
+        coffeeContainer.classList.toggle("active");
+
+        if (coffeeMenu.classList.contains("active")) {
+            setTimeout(() => {
+                mainLogo.style.opacity = "1";
+                mainLogo.style.transform = "scale(1)";
+                mainLogo.style.pointerEvents = "all"; // Make sure it's clickable
+            }, 100);
+        } else {
+            mainLogo.style.opacity = "0";
+            mainLogo.style.transform = "scale(0.5)";
+            mainLogo.style.pointerEvents = "none"; // Prevents accidental clicks
+        }
+    });
+
+    // Allow main logo to collapse menu when clicked again
+    mainLogo.addEventListener("click", function () {
+        coffeeMenu.classList.remove("active");
+        coffeeContainer.classList.remove("active");
+        mainLogo.style.opacity = "0";
+        mainLogo.style.transform = "scale(0.5)";
+        mainLogo.style.pointerEvents = "none";
     });
 });
+
+
+
 
 
 

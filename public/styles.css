@@ -286,12 +286,11 @@ nav img {
     }
 }
 
-
-/* Footer Styling */
+/* Footer & Button Container */
 footer {
     width: 100%;
-    background: #111; /* Dark background */
-    color: #fff; /* White text */
+    background: #111;
+    color: #fff;
     padding: 5px 20px;
     font-size: 16px;
     font-family: "Jersey 20";
@@ -300,18 +299,12 @@ footer {
     left: 0;
     z-index: 1000;
     border-top: 2px solid #FFB22C;
-
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Push content to edges */
+    justify-content: space-between;
 }
 
-/* Buy Me a Coffee Button Inside Footer */
-.coffee-container {
-    position: relative;
-    margin-right: 30px;
-}
-
+/* Buy Me a Coffee Button */
 #coffee-btn {
     background: #FFB22C;
     color: #000;
@@ -321,9 +314,10 @@ footer {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Button Hover Effect */
 #coffee-btn:hover {
     background: #ff9900;
 }
@@ -331,52 +325,81 @@ footer {
 /* Coffee Menu - Initially Hidden */
 .coffee-menu {
     position: absolute;
-    bottom: 50px; /* Above footer */
+    bottom: 50px; /* Place above footer */
     right: 0;
     display: flex;
-    flex-direction: column; /* Stack vertically */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     opacity: 0;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none; /* Prevents clicks when not visible */
 }
 
-/* Adjust Individual Logo Containers */
-.coffee-menu div {
-    width: 40px; /* Resize for smaller appearance */
-    height: 40px;
+/* The button transforms into this placeholder */
+.main-logo {
+    width: 45px;
+    height: 45px;
+    background: #FFB22C;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 178, 44, 0.8); /* Subtle background */
-    transition: transform 0.3s ease-in-out;
-    
-    /* Make sure logos connect seamlessly */
-    border-radius: 0; /* Remove gaps */
-    
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    cursor: pointer; /* Ensures it's clickable */
 }
 
-/* Adjust First and Last Item for Rounded Edges */
-.coffee-menu div:first-child {
-    border-radius: 10px 10px 0 0; /* Round top */
-}
-.coffee-menu div:last-child {
-    border-radius: 0 0 10px 10px; /* Round bottom */
-}
-
-/* Adjust Logo Size */
-.coffee-menu img {
-    width: 30px; /* Resize images */
-    height: auto;
+/* When Active - The button turns into this logo */
+.coffee-menu.active .main-logo {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all; /* Allows clicks */
 }
 
 /* Show Menu When Active */
 .coffee-menu.active {
     opacity: 1;
     transform: translateY(0);
+    pointer-events: all;
 }
 
+/* Hide Button When Active & Transform it into the Main Logo */
+.coffee-container.active #coffee-btn {
+    opacity: 0; /* Fade out smoothly */
+    transform: scale(0.5); /* Slight shrink instead of disappearing */
+    pointer-events: none; /* Prevents clicks when hidden */
+}
 
+/* Ensure Logos are Properly Displayed */
+.coffee-menu div {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 178, 44, 0.8);
+    transition: transform 0.3s ease-in-out;
+    
+    /* Make sure logos connect seamlessly */
+    border-radius: 0;
+}
 
+/* Adjust First and Last Item for Rounded Edges */
+.coffee-menu div:first-child {
+    border-radius: 10px 10px 0 0;
+}
+.coffee-menu div:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+/* Ensure logos above the transformed button are fully visible */
+.coffee-menu.active div img {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
 
 
 .loader {
