@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fav Moto</title>
+
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Micro+5&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img src="img/stonkMan.png" alt="Logo">
+            <span class="typing-text" id="typing-text"></span>
+        </div>
+        <div class="nav-links">
+            <a href="https://x.com/0100ks" target="_blank">X</a>
+            <a href="https://t.me/afokekyikethu" target="_blank">Telegram</a>
+            <a href="https://discord.com/users/581843365562155009"  target="_blank">Discord</a>
+        </div>
+    </nav>
+
+    <h1 class="title-text">My Dream Motorcycle (2025)</h1>
+
+    <div class="image-container">
+        <form action="/submit" method="POST">
+            <input type="hidden" name="suzuki" value="gsx8r">
+            <button type="submit" class="image-button">
+                <img src="/img/GSX8R.png" alt="Bike 1">
+            </button>
+        </form>
+        <form action="/submit" method="POST">
+            <input type="hidden" name="bmw" value="s1000rr">
+            <button type="submit" class="image-button">
+                <img src="/img/S1000RR.png" alt="Bike 3">
+            </button>
+        </form>
+        <form action="/submit" method="POST">
+            <input type="hidden" name="kawasaki" value="h2">
+            <button type="submit" class="image-button">
+                <img src="/img/H2.png" alt="Bike 2">
+            </button>
+        </form>
+    </div>
+
+    <% if (!locals.selectedBike) { %>
+        <div class="bike-info-not">
+            <h2>Please choose one of the above ☝️</h2>
+        </div>
+    <% } else { %>
+        <div class="bike-info" id="bike-info">
+            <h2><%= selectedBike.name %></h2>
+            <ul>
+                <li>Year: <%= selectedBike.year %></li>
+                <li>Category: <%= selectedBike.category %></li>
+                <li>Engine: <%= selectedBike.engine %></li>
+                <li>Max Power: <%= selectedBike['max-power'] %></li>
+                <li>Max Torque: <%= selectedBike['max-torque'] %></li>
+                <li>Fuel System: <%= selectedBike['fuel-sys'] %></li>
+                <li>Transmission: <%= selectedBike.transmission %></li>
+                <li>0 to 100 km/h: <%= selectedBike['0-to-100'] %></li>
+            </ul>
+        </div>
+    <% } %>
+
+    
+    
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Mahdi. All rights reserved.</p>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>

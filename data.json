@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Suzuki GSX-8R",
+        "year": 2025,
+        "category": "Sportbike",
+        "engine": "776cc, 4-stroke, liquid-cooled, DOHC parallel twin",
+        "max-power": "81.8 hp at 8,500 rpm",
+        "max-torque": "78 Nm",
+        "fuel-sys": "EFI",
+        "transmission": "6-speed constant mesh with Bi-directional Quick Shift system",
+        "0-to-100": "3.8 sec"
+    },
+    {
+        "id": 2,
+        "name": "Kawasaki Ninja H2",
+        "year": 2025,
+        "category": "Hyperbike",
+        "engine": "998cc, 4-stroke, liquid-cooled, DOHC, 16-valve inline four with supercharger",
+        "max-power": "239.6 hp at 11,500 rpm",
+        "max-torque": "104.9 lb-ft at 11,000 rpm",
+        "fuel-sys": "DFI® with 50mm throttle bodies (4) with dual injection",
+        "transmission": "6-speed, return shift, dog-ring",
+        "0-to-100": "Approximately 2.5 sec"
+    },
+    {
+        "id": 3,
+        "name": "BMW S1000RR",
+        "year": 2025,
+        "category": "Superbike",
+        "engine": "999cc, water/oil-cooled, 4-cylinder, 4-stroke in-line engine",
+        "max-power": "205 hp at 13,000 rpm",
+        "max-torque": "83 lb-ft at 11,000 rpm",
+        "fuel-sys": "Electronic fuel injection with 48mm throttle bodies",
+        "transmission": "6-speed, constant mesh with multi-plate clutch",
+        "0-to-100": "Approximately 3.1 sec"
+    }
+]
