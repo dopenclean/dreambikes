@@ -315,6 +315,7 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-right: 30px;
 }
 
 /* Button Hover Effect */
