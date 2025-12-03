@@ -134,6 +134,12 @@ nav img {
     color: white;
     font-size: 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: opacity 0.3s ease;
+}
+
+.bike-info-not.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .bike-info-not h2{
@@ -304,6 +310,12 @@ footer {
     justify-content: space-between;
 }
 
+/* Coffee Container */
+.coffee-container {
+    position: relative;
+    margin-right: 30px;
+}
+
 /* Buy Me a Coffee Button */
 #coffee-btn {
     background: #FFB22C;
@@ -315,7 +327,8 @@ footer {
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin-right: 30px;
+    position: relative;
+    z-index: 10;
 }
 
 /* Button Hover Effect */
@@ -323,41 +336,20 @@ footer {
     background: #ff9900;
 }
 
-/* Coffee Menu - Initially Hidden */
+/* Coffee Menu - Vertical Stack */
 .coffee-menu {
     position: absolute;
-    bottom: 50px; /* Place above footer */
+    bottom: 50px;
     right: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 0;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none; /* Prevents clicks when not visible */
-}
-
-/* The button transforms into this placeholder */
-.main-logo {
-    width: 45px;
-    height: 45px;
-    background: #FFB22C;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: scale(0.5);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    cursor: pointer; /* Ensures it's clickable */
-}
-
-/* When Active - The button turns into this logo */
-.coffee-menu.active .main-logo {
-    opacity: 1;
-    transform: scale(1);
-    pointer-events: all; /* Allows clicks */
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    background: rgba(255, 178, 44, 0.9);
+    border-radius: 8px;
 }
 
 /* Show Menu When Active */
@@ -367,41 +359,63 @@ footer {
     pointer-events: all;
 }
 
-/* Hide Button When Active & Transform it into the Main Logo */
-.coffee-container.active #coffee-btn {
-    opacity: 0; /* Fade out smoothly */
-    transform: scale(0.5); /* Slight shrink instead of disappearing */
-    pointer-events: none; /* Prevents clicks when hidden */
-}
-
-/* Ensure Logos are Properly Displayed */
-.coffee-menu div {
-    width: 40px;
-    height: 40px;
+/* Individual Logo Containers */
+.coffee-menu > div {
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 178, 44, 0.8);
-    transition: transform 0.3s ease-in-out;
-    
-    /* Make sure logos connect seamlessly */
-    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: translateY(20px);
+    opacity: 0;
 }
 
-/* Adjust First and Last Item for Rounded Edges */
-.coffee-menu div:first-child {
-    border-radius: 10px 10px 0 0;
-}
-.coffee-menu div:last-child {
-    border-radius: 0 0 10px 10px;
+/* Staggered Animation for Each Logo */
+.coffee-menu.active .solana-addy {
+    animation: slideUp 0.3s ease forwards;
+    animation-delay: 0.1s;
 }
 
-/* Ensure logos above the transformed button are fully visible */
-.coffee-menu.active div img {
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
+.coffee-menu.active .base-addy {
+    animation: slideUp 0.3s ease forwards;
+    animation-delay: 0.2s;
 }
 
+.coffee-menu.active .btc-addy {
+    animation: slideUp 0.3s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Logo Images */
+.coffee-menu img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+/* Rounded Corners for top item */
+.coffee-menu > div:last-child {
+    border-radius: 8px 8px 0 0;
+}
+
+/* Rounded Corners for bottom item */
+.coffee-menu > div:first-child {
+    border-radius: 0 0 8px 8px;
+}
+
+/* Hover Effects */
+.coffee-menu > div:hover {
+    background: rgba(255, 153, 0, 0.9);
+}
 
 .loader {
     width: 50px;
@@ -447,8 +461,3 @@ footer {
     z-index: 1000;
     transition: opacity 0.3s ease-in-out;
 }
-
-
-
-
-

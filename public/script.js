@@ -30,9 +30,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const bikeInfoBox = document.getElementById("bike-info");
+    const bikeInfoNot = document.getElementById("bike-info-not");
 
     if (bikeInfoBox) {
         bikeInfoBox.style.display = "block";
+        
+        // Hide the "Please choose" message when bike info is shown
+        if (bikeInfoNot) {
+            bikeInfoNot.classList.add("hidden");
+        }
 
         window.history.pushState(null, "", "/submit");
 
@@ -42,7 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 
                 setTimeout(() => {
                     bikeInfoBox.style.display = "none";
-                    window.history.pushState(null, "", "/"); // Reset URL to /
+                    
+                    // Show the "Please choose" message again
+                    if (bikeInfoNot) {
+                        bikeInfoNot.classList.remove("hidden");
+                    }
+                    
+                    window.history.pushState(null, "", "/");
                 }, 300);
             }
         });
@@ -57,65 +69,33 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".image-button");
     const loader = document.getElementById("loader");
-    const body = document.body; // Select body instead of html
+    const body = document.body;
 
     buttons.forEach(button => {
         button.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent instant form submission
+            event.preventDefault();
 
             loader.style.display = "block";
-            body.classList.add("dimmed-background"); // Apply background dimming effect
+            body.classList.add("dimmed-background");
             
-            // Small delay before form submission
             setTimeout(() => {
                 event.target.closest("form").submit();
-            }, 300); // Prevent flashing effect
+            }, 300);
         });
     });
 
-    // Restore background when page loads again
     window.addEventListener("pageshow", function () {
         loader.style.display = "none";
         body.classList.remove("dimmed-background");
     });
 });
 
-// buy me coffee
+// Buy me coffee - Toggle with same button
 document.addEventListener("DOMContentLoaded", function () {
     const coffeeBtn = document.getElementById("coffee-btn");
     const coffeeMenu = document.querySelector(".coffee-menu");
-    const coffeeContainer = document.querySelector(".coffee-container");
-    const mainLogo = document.querySelector(".main-logo");
 
     coffeeBtn.addEventListener("click", function () {
         coffeeMenu.classList.toggle("active");
-        coffeeContainer.classList.toggle("active");
-
-        if (coffeeMenu.classList.contains("active")) {
-            setTimeout(() => {
-                mainLogo.style.opacity = "1";
-                mainLogo.style.transform = "scale(1)";
-                mainLogo.style.pointerEvents = "all"; // Make sure it's clickable
-            }, 100);
-        } else {
-            mainLogo.style.opacity = "0";
-            mainLogo.style.transform = "scale(0.5)";
-            mainLogo.style.pointerEvents = "none"; // Prevents accidental clicks
-        }
-    });
-
-    // Allow main logo to collapse menu when clicked again
-    mainLogo.addEventListener("click", function () {
-        coffeeMenu.classList.remove("active");
-        coffeeContainer.classList.remove("active");
-        mainLogo.style.opacity = "0";
-        mainLogo.style.transform = "scale(0.5)";
-        mainLogo.style.pointerEvents = "none";
     });
 });
-
-
-
-
-
-

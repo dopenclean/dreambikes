@@ -53,11 +53,12 @@
         </form>
     </div>
 
-    <% if (!locals.selectedBike) { %>
-        <div class="bike-info-not">
-            <h2>Please choose one of the above ☝️</h2>
-        </div>
-    <% } else { %>
+    <!-- Always show this message, just hide it when bike info is shown -->
+    <div class="bike-info-not" id="bike-info-not">
+        <h2>Please choose one of the above ☝️</h2>
+    </div>
+
+    <% if (locals.selectedBike) { %>
         <div class="bike-info" id="bike-info">
             <h2><%= selectedBike.name %></h2>
             <ul>
@@ -89,7 +90,6 @@
     
             <!-- This transforms into a logo & reveals others -->
             <div class="coffee-menu">
-                <div class="main-logo"></div> <!-- The button transforms into this -->
                 <div class="solana-addy"><img src="img/solanalogo.png" alt="Solana"></div>
                 <div class="base-addy"><img src="img/baselogo.png" alt="Base"></div>
                 <div class="btc-addy"><img src="img/btclogo.png" alt="Bitcoin"></div>
